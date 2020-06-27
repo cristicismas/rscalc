@@ -23,3 +23,15 @@ pub fn calculate(elements: Vec<String>) -> Result<String, ParseFloatError> {
 
   return Ok(result.to_string());
 }
+
+#[cfg(test)]
+mod tests {
+  use super::*;
+
+  #[test]
+  fn test_calculator() {
+    let elements = vec![String::from("4"), String::from("+"), String::from("5")];
+
+    assert_eq!(calculate(elements), Ok(String::from("9")));
+  }
+}
