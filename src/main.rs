@@ -18,7 +18,10 @@ fn main() {
         let line = read_line();
         let elements = parse_line_to_elements(line);
 
-        let result = calculate(elements);
+        let result = match calculate(elements) {
+            Ok(value) => value,
+            Err(_) => String::from("Operation failed. Please make sure your input is correct."),
+        };
 
         println!("{}", result);
     }
