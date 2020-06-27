@@ -8,12 +8,14 @@ pub fn calculate(elements: Vec<String>) -> Result<String, ParseFloatError> {
     let current_element = &elements[i][..];
 
     if SYMBOLS.contains(&current_element) {
+      let next_element = elements[i + 1].parse::<f64>()?;
+
       match current_element {
-        "+" => result += elements[i + 1].parse::<f64>()?,
-        "-" => result -= elements[i + 1].parse::<f64>()?,
-        "/" => result /= elements[i + 1].parse::<f64>()?,
-        "*" => result *= elements[i + 1].parse::<f64>()?,
-        "%" => result %= elements[i + 1].parse::<f64>()?,
+        "+" => result += next_element,
+        "-" => result -= next_element,
+        "/" => result /= next_element,
+        "*" => result *= next_element,
+        "%" => result %= next_element,
         _ => {}
       }
     }
